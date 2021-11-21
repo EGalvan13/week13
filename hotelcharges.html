@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Charges Esau Galvan</title>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+          .mainDiv {
+            border: 10px solid #000;
+            background: linear-gradient(to right,lightgray,#F7D417);
+          }
+        </style>
+      </head>
+      
+      <body>
+        <div class="mainDiv">
+          <h2>Hotel Charges</h2>
+          <br />
+          <p>Input number of nights, nightly charge,room service charge,telephone charge and miscellaneous charges to compute
+            room
+            <br />
+            charges,additional charges,subtotal, tax and total charges for your stay at the hotel.
+          </p>
+          <div style="display: flex;">
+            <div style="width: 50%;">
+              <img src="img.png" style="border-radius: 15%;margin-left: 10px;" />
+            </div>
+            <div style="width:30%" style="display: block;">
+              <p><b>Room Charges</b></p>
+              <table>
+                <tr>
+                  <td>
+                    <label>Nights: </label>
+                  </td>
+                  <td>
+                    <input id="nights"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Nightly charge: </label>
+                  </td>
+                  <td>
+                    <input id="night-charges"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><b>Additional Charges</b></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Room Service: </label>
+                  </td>
+                  <td>
+                    <input id="room-service"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Telephone: </label>
+                  </td>
+                  <td>
+                    <input id="telephone"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Miscellaneous: </label>
+                  </td>
+                  <td>
+                    <input id="misc"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p><b>Total Charges</b></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Room Charges: </label>
+                  </td>
+                  <td>
+                    <input disabled id="room-charge"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Additional Charges: </label>
+                  </td>
+                  <td>
+                    <input disabled id="add"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Subtotal: </label>
+                  </td>
+                  <td>
+                    <input disabled id="sub"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Tax 8.25%: </label>
+                  </td>
+                  <td>
+                    <input disabled id="tax"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>Total Charges: </label>
+                  </td>
+                  <td>
+                    <input disabled id="total"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex;">
+                      <button style="width: 110px;" onclick="Calculate()">Confirm</button>
+                      <button style="width: 110px;" onclick="Clear()">Clear</button>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div style="margin-right: 10px;">
+              <img src="img2.png"  />
+            </div>
+          </div>
+        </div>
+      </body>
+      <a href="http://csnet.southtexascollege.edu/localuser/egalva25/">Go Back to Homepage - Esau Galvan</a>
+      <script>
+      function Calculate(){
+        var nights = document.getElementById('nights');
+          var nightlyCharges = document.getElementById('night-charges');
+          var roomServeice = document.getElementById('room-service');
+          var tele = document.getElementById('telephone');
+          var misc = document.getElementById('misc');
+          var room = document.getElementById('room-charge');
+          var additional = document.getElementById('add');
+          var sub = document.getElementById('sub');
+          var tax = document.getElementById('tax');
+          var total = document.getElementById('total');
+      
+          var totalnights = nights.value;
+          var pernight = nightlyCharges.value;
+          var roomservicecharge = roomServeice.value;
+          var telephone = tele.value;
+          var miscellaneous = misc.value;
+          var additionalCharges = (parseFloat(roomservicecharge) + parseFloat(telephone) + parseFloat(miscellaneous))
+          additional.value = "$   " + additionalCharges;
+          totalRoomCharges = (totalnights * pernight)
+          room.value = "$   " + totalRoomCharges;
+          var subTotal = (parseFloat(additionalCharges) + parseFloat(totalRoomCharges))
+          sub.value = "$   " + subTotal;
+          var totalTax = ((parseFloat(subTotal) * 8.25)/100).toFixed(2);
+          tax.value = "$   " + totalTax;
+          total.value = "$   " + (parseFloat(subTotal) + parseFloat(totalTax));
+      }
+      
+      function Clear() {
+          var nights = document.getElementById('nights');
+          var nightlyCharges = document.getElementById('night-charges');
+          var roomServeice = document.getElementById('room-service');
+          var tele = document.getElementById('telephone');
+          var misc = document.getElementById('misc');
+          var room = document.getElementById('room-charge');
+          var additional = document.getElementById('add');
+          var sub = document.getElementById('sub');
+          var tax = document.getElementById('tax');
+          var total = document.getElementById('total');
+        
+          nights.value = "";
+          nightlyCharges.value = "";
+          roomServeice.value = "";
+          tele.value = "";
+          misc.value = "";
+          room.value = "";
+          additional.value = "";
+          sub.value = "";
+          tax.value = "";
+          total.value = "";
+      
+      }
+      </script>
+      </html>
